@@ -1,1 +1,6 @@
-1770180839861 : New Request is received /Home 
+
+Fri Feb 06 2026 09:56:11 GMT+0530 (India Standard Time) : New Request is received on /home and type of request is GET 
+Fri Feb 06 2026 09:56:21 GMT+0530 (India Standard Time) : New Request is received on /signup and type of request is GET 
+Fri Feb 06 2026 09:57:24 GMT+0530 (India Standard Time) : New Request is received on /signup and type of request is GET 
+Fri Feb 06 2026 09:57:34 GMT+0530 (India Standard Time) : New Request is received on /Home and type of request is GET 
+Fri Feb 06 2026 09:57:48 GMT+0530 (India Standard Time) : New Request is received on /home and type of request is GET 

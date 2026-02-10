@@ -9,5 +9,5 @@ const server=http.createServer((req,res)=>{
     res.end("Hello from Server!!");
 });
 
-// Server= 0 to 65376
+// Server= 0 to 65535
 server.listen(4400, ()=> console.log("Server is Running"));

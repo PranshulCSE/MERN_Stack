@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "name": "http",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Method.js",
+  "devDependencies": {},
+  "scripts": {
+    "start":"node method"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

@@ -1,0 +1,4 @@
+Fri Feb 06 2026 10:09:33 GMT+0530 (India Standard Time) : New Request is received on /home and type of request is GET 
+Fri Feb 06 2026 10:09:39 GMT+0530 (India Standard Time) : New Request is received on /about?username=Jatin and type of request is GET 
+Fri Feb 06 2026 10:09:49 GMT+0530 (India Standard Time) : New Request is received on /sigunup?username=Jatin and type of request is GET 
+Fri Feb 06 2026 10:10:02 GMT+0530 (India Standard Time) : New Request is received on /signup?username=Jatin and type of request is GET 
