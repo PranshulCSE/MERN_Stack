@@ -32,19 +32,6 @@ app.get("/users/:id", (req, res) => {
     res.json(user);
 });
 
-app.post("/rest/users", (req, res) => {
-    const body = req.body;
-    // console.log(body);
-    // return res.json({"message":"Request submitted Successfully"});
-    users.push({ ...body, id: users.length + 1 });
-    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
-        if (err) {
-            console.log(err);
-            return res.json({ Error: "404" });
-        }
-        return res.json({ message: "User Created Successfully!!" });
-    })
-})
 
 app.patch("/rest/users/:id", (req, res) => {
     const id = Number(req.params.id);

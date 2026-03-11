@@ -1,16 +1,23 @@
+
 const express = require("express");
 const users = require("./MOCK_DATA.json");
+const fs = require("fs");
+const { json } = require("stream/consumers");
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
+
+// app.use(express.json());
+app.use(express.urlencoded({ extended: false })); // Middleware to convert data into Browser Friendly form
 
 app.get("/html/users", (req, res) => {
     const html = `<ol>  
       ${users.map(
-                (user) => `
+        (user) => `
         <li>
           <h5>First Name: ${user.first_name}</h5>
           <h5>Last Name: ${user.last_name}</h5>
           <h3>Email: ${user.email}</h3>
+          <h6>Id:${user.id}</h6>
         </li>
       `).join("")}
     </ol>`;
@@ -27,20 +34,18 @@ app.get("/users/:id", (req, res) => {
     res.json(user);
 });
 
-app.post("/rest/users", (req, res) => {
-    const body = req.body;
-    // console.log(body);
-    // return res.json({"message":"Request submitted Successfully"});
-    users.push({ ...body, id: users.length + 1 });
-    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
-        if (err) {
-            console.log(err);
-            return res.json({ Error: "404" });
-        }
-        return res.json({ message: "User Created Successfully!!" });
-    })
+app.delete("/rest/users/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const userIndex = users.findIndex((u) => u.id === id);
+    if (userIndex === -1) {
+        return res.json({ Error: "User Not Found" });
+    }
+    users.splice(userIndex, 1);
+    for(let i=userIndex;i<users.length;i++){
+        users[i].id--;
+    }
+    return res.json({ message: "User Deleted Successfully" });
 })
-
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

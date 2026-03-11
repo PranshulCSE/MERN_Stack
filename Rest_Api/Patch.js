@@ -1,12 +1,17 @@
 const express = require("express");
 const users = require("./MOCK_DATA.json");
+const fs = require("fs");
+const { json } = require("stream/consumers");
 const app = express();
 const PORT = 3000;
+
+// app.use(express.json());
+app.use(express.urlencoded({ extended: false })); // Middleware to convert data into Browser Friendly form
 
 app.get("/html/users", (req, res) => {
     const html = `<ol>  
       ${users.map(
-                (user) => `
+        (user) => `
         <li>
           <h5>First Name: ${user.first_name}</h5>
           <h5>Last Name: ${user.last_name}</h5>
@@ -27,17 +32,20 @@ app.get("/users/:id", (req, res) => {
     res.json(user);
 });
 
-app.post("/rest/users", (req, res) => {
+
+app.patch("/rest/users/:id", (req, res) => {
+    const id = Number(req.params.id);
     const body = req.body;
-    // console.log(body);
-    // return res.json({"message":"Request submitted Successfully"});
-    users.push({ ...body, id: users.length + 1 });
-    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
-        if (err) {
-            console.log(err);
-            return res.json({ Error: "404" });
-        }
-        return res.json({ message: "User Created Successfully!!" });
+    const user = users.find((u) => u.id === id);
+    if (!user) {
+        return res.json({ Error: "User Not Found" });
+    }
+    Object.assign(user, body);
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users),(err)=>{
+        if(err)
+            return res.json({message:"Error Updating User"});
+
+    return res.json({ message: "User updated Successfully" });
     })
 })
 
