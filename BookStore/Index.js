@@ -1,5 +1,4 @@
 const express = require('express');
-const { error } = require('node:console');
 const app = express();
 
 const Books = [
