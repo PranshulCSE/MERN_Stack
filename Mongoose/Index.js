@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const connectToDatabase = require('./Controller/Database');
+const connectToDatabase = require('./Configuration/Database');
 const userModel = require('./Models/UserModel');
 
 app.use(express.json());
