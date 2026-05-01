@@ -11,12 +11,11 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
 
 
 // Routes
-app.use('/api/authors', authorRoutes);
-app.use('/api/books', bookRoutes);
+app.use('/authors', authorRoutes);
+app.use('/books', bookRoutes);
 
 const PORT = 5000;
 app.listen(PORT, () => {

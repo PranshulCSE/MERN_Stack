@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const URL="MongoDb://"
+const URL ="mongodb+srv://threjapranshul_db_user:Pranshul@practicecluster.4zkr6cf.mongodb.net/Bookstore"
 const connectDB = async () => {
     
         await mongoose.connect(URL).then(()=>{
